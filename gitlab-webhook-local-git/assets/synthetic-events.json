@@ -1,0 +1,24 @@
+{
+  "note": "Minimal synthetic GitLab event projection; not a full capture, contains no authentication secrets, connects to no URL. Signature tests must compute over separately stored raw body bytes.",
+  "cases": [
+    {
+      "name": "allowed-push",
+      "headers": {"X-Gitlab-Event": "Push Hook", "Idempotency-Key": "synthetic-message-001"},
+      "body": {"object_kind": "push", "event_name": "push", "project_id": 101, "project": {"id": 101, "path_with_namespace": "synthetic/demo", "git_http_url": "https://example.invalid/synthetic/demo.git"}, "user_id": 202, "ref": "refs/heads/demo", "before": "1111111111111111111111111111111111111111", "after": "2222222222222222222222222222222222222222", "checkout_sha": "2222222222222222222222222222222222222222", "commits": [], "total_commits_count": 0},
+      "expected": "Allow one business operation only after mode authentication and internal project/ref/user permissions pass; the URL is not accessed"
+    },
+    {
+      "name": "unknown-event",
+      "headers": {"X-Gitlab-Event": "Unknown Hook", "Idempotency-Key": "synthetic-message-002"},
+      "body": {"object_kind": "unknown", "project_id": 101},
+      "expected": "Unknown event produces no side effects"
+    },
+    {
+      "name": "project-mismatch",
+      "headers": {"X-Gitlab-Event": "Push Hook", "Idempotency-Key": "synthetic-message-003"},
+      "body": {"object_kind": "push", "event_name": "push", "project_id": 101, "project": {"id": 999}, "ref": "refs/heads/demo"},
+      "expected": "Ownership mismatch is rejected"
+    }
+  ],
+  "derived_tests": ["Valid case resent with same ID/body", "Same ID with changed body conflicts", "Wrong/missing token", "In supported signature mode: bad signature/expired/future timestamp/tampered raw body", "Signature failure does not fall back to token", "Real domain/redirect/business directory rejected", "Valid token still lacks deployment permission"]
+}

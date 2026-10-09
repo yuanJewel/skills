@@ -1,0 +1,44 @@
+# For an approved isolated OpenLDAP fixture only; requires the core/cosine/inetorgperson schemas.
+# The suffix dc=example,dc=invalid must be configured separately by the fixture; this file is not server configuration.
+# All identities are synthetic; there is no userPassword, so a successful login cannot be verified from this file.
+# Synthetic passwords, TLS and the service bind DN are supplied by a separate test fixture; no real directory is queried.
+dn: dc=example,dc=invalid
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+dc: example
+o: Synthetic Directory
+
+dn: ou=people,dc=example,dc=invalid
+objectClass: organizationalUnit
+ou: people
+
+dn: ou=groups,dc=example,dc=invalid
+objectClass: organizationalUnit
+ou: groups
+
+dn: uid=reader-one,ou=people,dc=example,dc=invalid
+objectClass: inetOrgPerson
+uid: reader-one
+cn: Reader One
+sn: One
+
+dn: uid=writer-one,ou=people,dc=example,dc=invalid
+objectClass: inetOrgPerson
+uid: writer-one
+cn: Writer One
+sn: One
+
+dn: cn=readers,ou=groups,dc=example,dc=invalid
+objectClass: groupOfNames
+cn: readers
+member: uid=reader-one,ou=people,dc=example,dc=invalid
+member: uid=writer-one,ou=people,dc=example,dc=invalid
+
+dn: cn=writers,ou=groups,dc=example,dc=invalid
+objectClass: groupOfNames
+cn: writers
+member: uid=writer-one,ou=people,dc=example,dc=invalid
+
+# No-group scenario: in a separate fixture, remove reader-one from readers; the group still contains writer-one.
+# Negative cases such as disabled accounts, cycles, paging/duplicate identities are constructed separately per topic; this file does not mean they were tested.

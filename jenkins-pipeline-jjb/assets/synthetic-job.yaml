@@ -1,0 +1,27 @@
+# For offline synthetic rendering only; execution requires a separately approved local test copy and agent node.
+- job-template:
+    name: '{name}-contract-demo'
+    project-type: pipeline
+    disabled: true
+    sandbox: true
+    parameters:
+      - string:
+          name: OPERATION_ID
+          default: 'synthetic-operation'
+    dsl: |
+      pipeline {{
+        agent {{ label '{node_label}' }}
+        stages {{
+          stage('Validate') {{
+            steps {{ echo 'synthetic validation only' }}
+          }}
+          stage('Result') {{
+            steps {{ echo 'synthetic result only' }}
+          }}
+        }}
+      }}
+- project:
+    name: 'local-synthetic'
+    node_label: 'synthetic-only'
+    jobs:
+      - '{name}-contract-demo'

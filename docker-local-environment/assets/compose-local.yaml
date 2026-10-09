@@ -1,0 +1,44 @@
+# Synthetic example: uses only a verified local Python 3 image; not the project's full environment.
+# Networks: isolated is an internal network; dependency services (databases, caches, etc.) attach only to it.
+# Containers attached only to an internal network get no host port mapping, so services needing host access also attach to publish.
+# Trade-off: attaching to publish gives the service a route out through the host; if the task requires it to have no egress either,
+# remove ports and publish, and use a probe container on the isolated network or `docker compose exec` for readiness/smoke checks.
+services:
+  fixture:
+    image: "${LOCAL_TEST_IMAGE:?set an explicitly verified local Python 3 image}"
+    pull_policy: never
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    cpus: "0.25"
+    mem_limit: 128m
+    pids_limit: 64
+    tmpfs:
+      - /tmp:rw,nosuid,noexec,size=16m,mode=1777
+    ports:
+      # Bind to loopback only; the mapping takes effect only when the publish network is present.
+      - "127.0.0.1:${LOCAL_HTTP_PORT:?set a separately reserved node port}:8000"
+    networks: [isolated, publish]
+    command:
+      - python3
+      - -c
+      - |
+        import functools, http.server, json, pathlib
+        root = pathlib.Path('/tmp/fixture')
+        root.mkdir()
+        (root / 'ready.json').write_text(json.dumps({'ready': True, 'data': 'synthetic'}))
+        handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(root))
+        http.server.HTTPServer(('0.0.0.0', 8000), handler).serve_forever()
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import json,urllib.request; r=json.load(urllib.request.urlopen('http://127.0.0.1:8000/ready.json',timeout=2)); assert r == {'ready': True, 'data': 'synthetic'}"]
+      interval: 3s
+      timeout: 3s
+      retries: 5
+      start_period: 2s
+networks:
+  isolated:
+    internal: true
+  publish:
+    # Plain bridge, attached only by services that need a host port.
+    driver: bridge

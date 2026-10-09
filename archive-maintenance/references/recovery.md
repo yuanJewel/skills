@@ -1,0 +1,30 @@
+# Interruption continuation and actual recovery
+
+Recover only from this batch's manifest, confirmed results and current authorisation. Without a manifest, never conclude "already copied" or "deletable" from similar file names. First confirm whether an old copy/pointer-change/move-out action is still running; if its final state is unknown, stay read-only and contact the original owner; do not start a writer on the same target.
+
+## Continue from the breakpoint
+
+| Last confirmed point | Read-only judgment | Next action and stop condition |
+| --- | --- | --- |
+| Copy not started | Pinned source still matches the manifest; no conflict at the destination | Keep the stable window and continue the authorised copy; if the source changed, build a new manifest and reassess current activity state. |
+| Copy interrupted or out of space | Compare existence, size/hash of each target; separate not started, complete, partial, unknown origin | Freeze complete items; fill missing items in a separate batch once space is available; keep partial items as evidence and recopy under a new version name. Deleting any leftover still requires explicit scoped authorisation; never delete the source first "to continue". |
+| Same-name target already exists | Verify which batch the target came from, whether it is confirmed, whether the source is the same version | Not from this batch -> choose another version directory; items this batch already copied successfully are re-verified with verify, never overwritten again; the same file name or same size is not enough to accept it. |
+| Copy complete but references not fully migrated | Verify source + archive; list old pointers and frozen/unwritable consumers | Change only approved pointers; frozen items use a reachable old entry or an added index; do not move the source out until consumers are fully verified. |
+| Pointers changed but verification failed | Find the most recent proven source/archive and reference version | Keep files on both sides; when the referenced archive is untrusted, restore the previous pointer within write permission only if the current source still passes identity checks; otherwise mark temporarily unavailable, never point at a wrong version. |
+| Active area moved out but recovery failed | Check confirmed archive, other approved copies, approvals and the latest move-out record | Stop further move-out; restore into a new empty directory and compare byte for byte, keep the faulty copy and evidence. Without a trusted copy, report the data gap; never rewrite the original from a summary. |
+
+## Recovery drill steps
+
+1. Define the version to recover, the item set, read permission and the intended use. Approvals and non-rebuildable evidence are preferably recovered in full; large batches of rebuildable objects are spot-checked by type/size/boundary with unsampled items recorded; never write a passing sample as full recoverability.
+2. Choose an empty recovery directory within authorised scope. If a same-name file exists, check its origin first; do not overwrite the user's current files and do not rewrite in place inside the archive directory. Use a tool to produce an actual independent copy and keep its returned result; neither symlinks nor hard links can serve as recovery copies.
+3. Create a new `phase: restore` manifest and add `restore: {"root": "{{allowed_root_name}}", "path": "{{restore_dir_and_file}}"}` to each item of this run; size/hash keep using the pinned values of the confirmed archive. When the source has already been moved out its locator may stay, but the script does not read it; if an old-source historical reference is deliberately kept, the source must still be verified as reachable and byte-identical.
+4. Use the verifier to check actual size/hash of archive/restore and chunked byte-for-byte equality, and check file identity before and after. A file merely appearing, two summary fields matching, or a success log cannot replace a real read comparison. A restored copy sharing an inode with the archive fails.
+5. List this run's actual consumers in the scan/reference manifest; the new index after recovery should point at the exact file of `kind: restore`. Open the original approval or material with an actual reading tool and verify attachments, encoding, dependencies and entries; archives/compression, permissions/ACLs, application formats and external service references need verification with the corresponding tool. This script only verifies plain file bytes and explicit paths and does not claim those extra semantics pass.
+6. Add this run's recovery inputs, verification output, actual consumption evidence, uncovered items and follow-up actions to the archive record. Temporary recovery-drill copies are handled per their retention contract and authorisation; the confirmed archive is still never rewritten. Update the owner and next step of the current status per `context-handoff`, without inventing a separate checkpoint template.
+
+## Judgment examples
+
+- Two plans reference an old specification: pin the old specification as a separate version and migrate the two editable indexes one by one; when a frozen original approval keeps the old path, a valid source or an explicit compatible entry must remain available; never change only one of them and then move out.
+- "The archive directory already has the file": precopy must reject it; when confirmed to be a complete copy from this batch, switch to verify for continued checking; if the content differs, isolate the conflict and choose a new version; never resolve it by automatic overwrite.
+- Editing continues during copying: stop claiming the batch is stable and keep the candidate; once a new stable source is obtained, build a new manifest and redo. File-system metadata checks only observe the run window and cannot replace stopping writers.
+- Large-file recovery: the stream hash and chunk comparison both read fully to EOF; output records only size/hash and result, never stuffs body text or binary into the receipt. A run interrupted without complete JSON/zero exit is incomplete.

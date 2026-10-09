@@ -1,0 +1,25 @@
+{
+  "format": "vendor-neutral-example-1",
+  "purpose": "Declarative contract; requires an adapter, not a tool import file",
+  "data_origin": "synthetic",
+  "network_policy": {"forward_unmatched": false, "upstream": null},
+  "state_scope": ["run_id", "node_id", "scenario_id"],
+  "clock": {"mode": "injected", "initial": "2030-01-01T00:00:00Z"},
+  "match_policy": {"method": "exact", "path": "exact", "query": "exact", "headers": "unchecked", "body": "exact"},
+  "routes": [
+    {
+      "id": "first-page",
+      "request": {"method": "GET", "path": "/v1/items", "query": {}, "body": "absent"},
+      "response": {"status": 200, "headers": {"Content-Type": "application/json"}, "json": {"items": [{"id": "synthetic-1"}], "next": "page-2"}},
+      "effect": "none"
+    },
+    {
+      "id": "second-page",
+      "request": {"method": "GET", "path": "/v1/items", "query": {"cursor": ["page-2"]}, "body": "absent"},
+      "response": {"status": 200, "headers": {"Content-Type": "application/json"}, "json": {"items": [{"id": "synthetic-2"}], "next": null}},
+      "effect": "none"
+    }
+  ],
+  "unmatched": {"status": 501, "json": {"code": "SIMULATION_UNMATCHED"}, "record_match_difference": true},
+  "not_covered": ["authentication", "mutating operations", "wire encoding", "real provider behavior"]
+}

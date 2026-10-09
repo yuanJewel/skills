@@ -1,0 +1,16 @@
+# Maintainer-local material, not published with the repository
+ai/
+CLAUDE.md
+AGENTS.md
+SOURCES.md
+
+# Host and system artefacts
+.claude/
+.agents/
+.DS_Store
+
+# Chinese changelog twin stays local
+CHANGELOG.zh.md
+
+# Library version pointer is maintainer-local
+VERSION
