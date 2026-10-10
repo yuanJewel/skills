@@ -2,7 +2,7 @@
 name: redis-patterns
 description: Design, implement or review Redis data models, TTL, cache consistency, locks, idempotency and client failure handling. Use for caching, sessions, counters, rate limiting and connection problems; pure SQL optimisation or configuration format edits without behaviour change do not trigger it automatically.
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Redis state and caching method

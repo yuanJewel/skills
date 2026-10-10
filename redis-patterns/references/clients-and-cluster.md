@@ -4,7 +4,10 @@ Clients are usually reused for the application lifetime, with a pool or multiple
 Separate connection usage of blocking commands, Pub/Sub and ordinary requests according to client capability; do not let long blocking calls exhaust the ordinary request pool.
 Do not create a new client per HTTP request, and do not blindly enlarge the pool to mask leaks.
 
-Set connect, pool-wait, command and total operation deadlines, all bounded by the caller's remaining deadline; retries plus backoff also count against the total budget. Parent cancellation immediately stops waiting and any later source fallback.
+Set connect, pool-wait, command and total operation deadlines, all bounded by the caller's remaining deadline; retries plus backoff also count against the total budget. On parent cancellation, stop starting work and skip any later source fallback.
+Verify how the actual client interrupts already-started I/O; context cancellation alone does not guarantee immediate interruption.
+Keep finite socket and pool-wait bounds even when passing a context.
+For go-redis/v9, verify the installed version and its `ContextTimeoutEnabled` setting before relying on context deadlines for network reads and writes.
 Distinguish pool exhaustion, dial failure, read/write timeout and business nil; observing wait/active/timeout counts is enough, and logs never print tokens/values.
 
 Reads may be retried according to idempotency; INCR, list pushes, Lua scripts and the like may already have executed, so a response timeout must not be blindly replayed.

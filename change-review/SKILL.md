@@ -2,7 +2,7 @@
 name: change-review
 description: Review whether a specified candidate change meets requirements, correctness and project standards, binding the content identity of new files, modifications, deletions and generation sources. Use for delivery re-review or an explicit change review; does not replace implementation, release approval or a full-repository security audit.
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Candidate change review

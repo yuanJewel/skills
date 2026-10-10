@@ -77,7 +77,7 @@ ln -s /path/to/skills/plan-design  <project>/.agents/skills/plan-design
 
 | 包 | 版本 | 用途 |
 | --- | --- | --- |
-| [change-review](change-review/SKILL.md) | 0.1.0 | 审查指定候选变更是否符合需求、正确性和项目标准，绑定新文件、修改、删除与生成来源的内容身份。适用于交付复核或明确的变更审查；不替代实施、发布批准或全仓安全审计。 |
+| [change-review](change-review/SKILL.md) | 0.1.1 | 审查指定候选变更是否符合需求、正确性和项目标准，绑定新文件、修改、删除与生成来源的内容身份。适用于交付复核或明确的变更审查；不替代实施、发布批准或全仓安全审计。 |
 | [security-review](security-review/SKILL.md) | 0.1.0 | 对指定代码变更中的身份、权限、外部输入、命令或文件操作、敏感出口及依赖做安全审查，输出有证据的风险与验证缺口。不探测生产，不自动修复或升级依赖。 |
 | [ai-trace-audit](ai-trace-audit/SKILL.md) | 0.1.0 | 审查指定变更里只服务 AI 会话的协作痕迹、失实注释和无效模板内容，按项目内容边界给出证据与合理例外。不检测作者身份，不自动删除或重写代码。 |
 | [coding-conventions](coding-conventions/SKILL.md) | 0.1.0 | 在已定实现、重构或审查范围内选择并应用项目代码规范，区分格式、惯例、语义缺陷和设计取舍。不自动更换格式器、技术栈，也不做全库重构。 |
@@ -109,7 +109,7 @@ ln -s /path/to/skills/plan-design  <project>/.agents/skills/plan-design
 | [grpc-proto-contract](grpc-proto-contract/SKILL.md) | 0.1.0 | 设计、修改或审查 Protocol Buffers 与 gRPC 契约，评估 schema 演进、生成代码和混合版本运行行为。用于 proto 变更、客户端升级与兼容故障；不因普通业务代码调用 gRPC 就扩大为全协议改造。 |
 | [http-api-design](http-api-design/SKILL.md) | 0.1.0 | 设计或审查 HTTP 端点的新增与演进，明确输入输出、权限、错误、幂等、分页和兼容窗口。已有确定合同的内部修复仅核受影响边界；不因 REST 偏好重建产品要求。 |
 | [mysql-migration-safety](mysql-migration-safety/SKILL.md) | 0.1.0 | 设计或审查 MySQL 表、索引、约束、回填与启动迁移，核对实际版本、应用兼容、锁、可重入与失败恢复。普通只读查询不启动迁移流程，生产 SQL 绝不自动执行。 |
-| [redis-patterns](redis-patterns/SKILL.md) | 0.1.0 | 设计、实现或审查 Redis 数据模型、TTL、缓存一致性、锁、幂等及客户端故障处理。用于缓存、会话、计数、限流和连接问题；纯 SQL 优化或无行为变化的配置格式修改不自动触发。 |
+| [redis-patterns](redis-patterns/SKILL.md) | 0.1.1 | 设计、实现或审查 Redis 数据模型、TTL、缓存一致性、锁、幂等及客户端故障处理。用于缓存、会话、计数、限流和连接问题；纯 SQL 优化或无行为变化的配置格式修改不自动触发。 |
 
 ### 前端与测试
 

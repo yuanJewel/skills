@@ -249,8 +249,14 @@ def snapshot(root, entries, byte_limit):
     payload['stability'] = 'two-content-reads-agree; not an atomic snapshot or a lock'
     return payload
 
+class JsonArgumentParser(argparse.ArgumentParser):
+    def error(self, message):
+        # CLI errors follow the same bounded JSON contract as invalid scope input.
+        print(encode({'error': 'missing or invalid command-line arguments', 'status': 'error'}).decode(), file=sys.stderr)
+        raise SystemExit(2)
+
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = JsonArgumentParser(description=__doc__)
     parser.add_argument('--root', required=True)
     parser.add_argument('--scope', required=True, help='explicit known non-secret scope JSON')
     parser.add_argument('--compare', help='previous manifest, never candidate content')

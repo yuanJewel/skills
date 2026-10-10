@@ -4,6 +4,16 @@ Applies to: a losable display cache whose authoritative source lives elsewhere; 
 It requires an explicit contract that cache failure may degrade to the source. Do not reuse it directly for permission/session/lock/idempotency authority.
 
 The code below uses the Get/Set result interfaces of go-redis/v9; read the actual dependency version from the project. TTL and the cache operation budget are passed in by the project; a zero value must never accidentally become persistent.
+Client precondition: the injected client must honour operation context deadlines.
+For a concrete go-redis/v9 client, verify the installed version and enable `redis.Options.ContextTimeoutEnabled`.
+With its default false value, network reads and writes can ignore the `WithTimeout` deadline used below.
+Configure finite dial, pool, read and write timeouts and bounded retries when constructing the client.
+The small Client interface cannot inspect these settings; verify this precondition with a delayed local response before using the template.
+
+The cache budget applies separately to Get and Set, not to the whole ReadThrough call.
+The authoritative load uses the parent context, whose deadline must bound the complete request.
+Cancelling that context does not by itself promise immediate interruption of already-started I/O; verify the client's behaviour and bound the remaining wait.
+
 Found distinguishes not-found from a legitimate empty string; only cache negatively when the authoritative source explicitly reports not-found. notify receives an error category, not the value or full error; the project may add non-sensitive metrics.
 
 ```go
