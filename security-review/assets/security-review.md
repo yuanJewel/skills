@@ -1,15 +1,15 @@
 # Security review result
 
-- Candidate: scope, version/content identifier, whether identical before and after the review.
-- Original requirements and constraints: project security contract, identity/data classification, permitted read/write and synthetic environments.
-- Evidence type: source analysis / synthetic run / observation in an authorised environment; tools and versions, unverified items.
-- Conclusion: no substantive findings / issues to fix / key evidence insufficient; limited to this review's coverage.
+- Candidate: `{{scope}}`, `{{content_identifier}}`, `{{identical_before_and_after}}`.
+- Original requirements and constraints: `{{security_contract}}`, `{{identity_and_data_classification}}`, `{{permitted_environments}}`.
+- Evidence type: `{{evidence_types}}` (source analysis / synthetic run / authorised observation); tools and versions: `{{tools_and_versions}}`; unverified: `{{unverified_items}}`.
+- Conclusion: `{{conclusion}}` (no substantive findings / issues to fix / key evidence insufficient); limited to this review's coverage.
 
 ## Boundaries and outputs
 
 | Input and controlling principal | Authentication/authorisation and authoritative layer | Operation or output | Verified basis / unverified premises |
 | --- | --- | --- | --- |
-| Actual entry point | Exact contract and source location | Including logs, errors and history paths | No real secrets |
+| `{{entry_point}}` | `{{contract_and_source_location}}` | `{{operation_or_output}}` | `{{verified_basis_or_unverified_premise}}` |
 
 ## Findings
 

@@ -10,3 +10,4 @@ Modifications: the method was rewritten and reorganised; adopted progressive dis
 ## Modification record
 
 - 2026-10-09: 0.1.0 initial public version, content as above.
+- 2026-10-11: 0.1.1 added the authoring checklist and external Skill source evaluation guidance.

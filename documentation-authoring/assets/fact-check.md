@@ -1,11 +1,11 @@
 # Document fact check
 
-Document location and version: fill in the target and content identifier.
-Check scope and method: source reading / synthetic run / actual rendering / link check; distinguish each item truthfully.
+Document location and version: `{{document_location}}`, `{{content_identifier}}`.
+Check scope and method: `{{scope_and_methods}}` (source reading / synthetic run / actual rendering / link check); distinguish each item truthfully.
 
 | Key assertion and body location | Category | Authoritative evidence and version | Actual verification result | Locations to update / unverified gaps |
 | --- | --- | --- | --- | --- |
-| Fill in the concrete assertion | Implemented / decided direction / illustrative / pending verification | Source code, contract, decision or acceptance record | Write the checks done; a heading is not evidence | Diagrams, tables, samples, conclusions or sources still needed |
+| `{{assertion_and_body_location}}` | `{{category}}` (implemented / decided direction / illustrative / pending verification) | `{{evidence_and_version}}` | `{{checks_done_and_result}}` | `{{locations_to_update_or_gaps}}` |
 
 ## Format and examples
 

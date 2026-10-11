@@ -78,9 +78,9 @@ ln -s /path/to/skills/plan-design  <project>/.agents/skills/plan-design
 | 包 | 版本 | 用途 |
 | --- | --- | --- |
 | [change-review](change-review/SKILL.md) | 0.1.1 | 审查指定候选变更是否符合需求、正确性和项目标准，绑定新文件、修改、删除与生成来源的内容身份。适用于交付复核或明确的变更审查；不替代实施、发布批准或全仓安全审计。 |
-| [security-review](security-review/SKILL.md) | 0.1.0 | 对指定代码变更中的身份、权限、外部输入、命令或文件操作、敏感出口及依赖做安全审查，输出有证据的风险与验证缺口。不探测生产，不自动修复或升级依赖。 |
-| [ai-trace-audit](ai-trace-audit/SKILL.md) | 0.1.0 | 审查指定变更里只服务 AI 会话的协作痕迹、失实注释和无效模板内容，按项目内容边界给出证据与合理例外。不检测作者身份，不自动删除或重写代码。 |
-| [coding-conventions](coding-conventions/SKILL.md) | 0.1.0 | 在已定实现、重构或审查范围内选择并应用项目代码规范，区分格式、惯例、语义缺陷和设计取舍。不自动更换格式器、技术栈，也不做全库重构。 |
+| [security-review](security-review/SKILL.md) | 0.1.1 | 对指定代码变更中的身份、权限、外部输入、命令或文件操作、敏感出口及依赖做安全审查，输出有证据的风险与验证缺口。不探测生产，不自动修复或升级依赖。 |
+| [ai-trace-audit](ai-trace-audit/SKILL.md) | 0.1.1 | 审查指定变更里只服务 AI 会话的协作痕迹、失实注释和无效模板内容，按项目内容边界给出证据与合理例外。不检测作者身份，不自动删除或重写代码。 |
+| [coding-conventions](coding-conventions/SKILL.md) | 0.1.1 | 在已定实现、重构或审查范围内选择并应用项目代码规范，区分格式、惯例、语义缺陷和设计取舍。不自动更换格式器、技术栈，也不做全库重构。 |
 
 ### 诊断、验证与发布
 
@@ -97,9 +97,9 @@ ln -s /path/to/skills/plan-design  <project>/.agents/skills/plan-design
 | 包 | 版本 | 用途 |
 | --- | --- | --- |
 | [archive-maintenance](archive-maintenance/SKILL.md) | 0.1.0 | 在活跃文档、规则、决定或证据需要归档、缩减当前入口或恢复历史时，分类保留合同、核对引用并证明可恢复性。用于资料生命周期治理；不承担业务数据迁移，也不因文件变大或过期自动清理。 |
-| [skill-maintenance](skill-maintenance/SKILL.md) | 0.1.0 | 设计、复核或在批准范围内编写与升级共享 Skill；涵盖方法提炼、触发及行为评估、来源许可和跨项目兼容维护。普通项目文档改字、使用既有 Skill 完成业务任务不触发本包。 |
+| [skill-maintenance](skill-maintenance/SKILL.md) | 0.1.1 | 设计、复核或在批准范围内编写与升级共享 Skill；涵盖方法提炼、触发及行为评估、来源许可和跨项目兼容维护。普通项目文档改字、使用既有 Skill 完成业务任务不触发本包。 |
 | [ai-workspace-governance](ai-workspace-governance/SKILL.md) | 0.1.0 | 在项目选定的资料根下建立、维护或复核 AI 工作资料。固定治理、选择性政策调整记忆、知识、活动计划、用户工作台与保留配置的共同核心；允许项目扩展，已验收计划统一归入同一归档根。普通取材、实施和单批归档沿用各自既有方法。 |
-| [documentation-authoring](documentation-authoring/SKILL.md) | 0.1.0 | 编写或修改面向人的技术、使用与解释文档，按读者目的组织结构，核实关键事实并检查示例、链接和交付格式。不代写项目治理规则，也不把会话流程混入业务文档。 |
+| [documentation-authoring](documentation-authoring/SKILL.md) | 0.1.1 | 编写或修改面向人的技术、使用与解释文档，按读者目的组织结构，核实关键事实并检查示例、链接和交付格式。不代写项目治理规则，也不把会话流程混入业务文档。 |
 
 ### 服务端
 

@@ -2,7 +2,7 @@
 name: skill-maintenance
 description: Design, review, or within approved scope author and upgrade shared Skills; covers method extraction, trigger and behaviour evaluation, source licensing and cross-project compatibility maintenance. Ordinary project-document wording edits and using an existing Skill to complete a business task do not trigger this package.
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Shared Skill maintenance
@@ -22,7 +22,7 @@ The three modes are independent; an accepted design or a review without objectio
 ## Execution route
 
 1. **Fix inputs**: target behaviour and adjacent exclusions, existing version/approved candidate, allowed files, consumer and host requirements, source licensing, acceptance and resources. A missing host blocks only the compatibility conclusion; missing write permission still allows design and review. First verify the previous writer has stopped; never take over the same file because a session lost contact.
-2. **Design or author**: read [Design and authoring method](references/design-and-authoring.md) and record actual gaps with the [design card](assets/skill-design-card.md). Extract project facts as inputs; keep decisions that must not be lost and failure recovery in the method; do not shrink an old document into slogans.
+2. **Design or author**: read [Design and authoring method](references/design-and-authoring.md) and record actual gaps with the [design card](assets/skill-design-card.md). Extract project facts as inputs; keep decisions that must not be lost and failure recovery in the method; do not shrink an old document into slogans. Before writing or changing package files, work through the [authoring checklist](references/authoring-checklist.md).
 3. **Review and verify**: read [Review and evaluation](references/review-and-evaluation.md) and, per the [review record](assets/skill-review.md), separate static format, content walkthrough and actual behaviour. New scripts must actually run normal and failure branches on synthetic, isolated input.
 4. **Shared upgrade**: when version, discovery mechanism, dependencies or consumer contract change, read [Compatibility and upgrades](references/compatibility-and-upgrades.md). Before changing the shared original, pin affected consumers, recovery point and verification scope; do not assume already-loaded sessions refresh automatically.
 5. **Deliver**: give the mode's artefact, actual evidence, unverified items and consumer impact; version/approval/key review go to the task record, the package keeps only the current method. Clean up your own temporary material per the existing retention rule; do not delete evidence still referenced.

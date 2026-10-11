@@ -2,7 +2,7 @@
 name: coding-conventions
 description: Choose and apply project code conventions within a decided implementation, refactor or review scope, separating formatting, conventions, semantic defects and design trade-offs. Does not automatically switch formatters or tech stacks, or refactor the whole repository.
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Choose and apply code conventions

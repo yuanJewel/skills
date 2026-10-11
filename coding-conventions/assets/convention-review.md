@@ -1,12 +1,12 @@
 # Convention record for this change
 
-- Scope and candidate: paths allowed to change, content identifier, current writer.
-- Basis adopted: format/lint/type configuration, language/framework version, similar implementations, applicable exceptions.
-- Mode: read-only suggestions / authorised implementation; a review request is not write permission.
+- Scope and candidate: `{{allowed_paths}}`, `{{content_identifier}}`, `{{current_writer}}`.
+- Basis adopted: `{{format_lint_type_config}}`, `{{language_framework_version}}`, `{{similar_implementations}}`, `{{applicable_exceptions}}`.
+- Mode: `{{mode}}` (read-only suggestions / authorised implementation); a review request is not write permission.
 
 | Location | Category | Rule and source | Actual impact/evidence | Suggestion or change | Exception/unverified |
 | --- | --- | --- | --- | --- | --- |
-| Exact file/line | Formatting / convention / semantic / design | Project configuration or contract location | Concrete behaviour or readability impact | Smallest-scope handling | Reason and review condition |
+| `{{file_path}}:{{line}}` | `{{category}}` (formatting / convention / semantic / design) | `{{rule_and_source_location}}` | `{{actual_impact_or_evidence}}` | `{{smallest_scope_change}}` | `{{exception_reason_or_unverified}}` |
 
 ## Verification
 

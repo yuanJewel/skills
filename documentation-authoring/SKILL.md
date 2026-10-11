@@ -2,7 +2,7 @@
 name: documentation-authoring
 description: Write or revise human-facing technical, usage and explanatory documentation, organising structure by reader purpose, verifying key facts and checking examples, links and delivery format. Does not author project governance rules or mix session workflow into business documentation.
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Reader-oriented documentation

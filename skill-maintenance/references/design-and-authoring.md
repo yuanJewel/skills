@@ -16,6 +16,14 @@ Classify old material item by item into: general decision method, current projec
 
 Example: the old rule "read all material every time" keeps the purpose "restore valid constraints at start", changed to entry -> relevant index -> sources needed for the decision, and verified so that a missed read reveals the gap. The old rule "write all files once design approval arrives" must not be carried over; write scope is decided by the current implementation request. An old "success log" is only a lead for failure cases and does not support that a new host has passed.
 
+When the method comes from an external Skill package, evaluate it by reading the full
+files at a pinned commit (not a branch tip), confirming the license is compatible and
+can be shipped per convention 2, and reading any scripts for network calls, file writes
+or installs outside their stated scope. Record the pinned commit, license and what is
+adopted or dropped with the source record. Star counts, download numbers and recency
+are not quality evidence. Deliver an adoption recommendation with that evidence; never
+install or pull the external package into a consuming project as part of evaluation.
+
 ## Write one complete path first, then split files
 
 1. Write the normal artefact from a concrete input. Add adjacent wrong requests, e.g. a request only to review should not automatically fix files; a request only to use a skill to produce a report should not maintain the skill.

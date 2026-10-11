@@ -98,9 +98,9 @@ context at once.
 | Package | Version | Purpose |
 | --- | --- | --- |
 | [change-review](change-review/SKILL.md) | 0.1.1 | Review whether a specified candidate change meets requirements, correctness and project standards, binding the content identity of new files, modifications, deletions and generation sources. Use for delivery re-review or an explicit change review; does not replace implementation, release approval or a full-repository security audit. |
-| [security-review](security-review/SKILL.md) | 0.1.0 | Security-review a designated code change for identity, permissions, external input, command or file operations, sensitive outputs and dependencies, and report evidence-backed risks and verification gaps. Does not probe production and does not auto-fix or upgrade dependencies. |
-| [ai-trace-audit](ai-trace-audit/SKILL.md) | 0.1.0 | Review a specified change for collaboration traces that only serve an AI session, false comments and ineffective template content, giving evidence and reasonable exceptions per the project content boundary. Does not detect authorship and does not automatically delete or rewrite code. |
-| [coding-conventions](coding-conventions/SKILL.md) | 0.1.0 | Choose and apply project code conventions within a decided implementation, refactor or review scope, separating formatting, conventions, semantic defects and design trade-offs. Does not automatically switch formatters or tech stacks, or refactor the whole repository. |
+| [security-review](security-review/SKILL.md) | 0.1.1 | Security-review a designated code change for identity, permissions, external input, command or file operations, sensitive outputs and dependencies, and report evidence-backed risks and verification gaps. Does not probe production and does not auto-fix or upgrade dependencies. |
+| [ai-trace-audit](ai-trace-audit/SKILL.md) | 0.1.1 | Review a specified change for collaboration traces that only serve an AI session, false comments and ineffective template content, giving evidence and reasonable exceptions per the project content boundary. Does not detect authorship and does not automatically delete or rewrite code. |
+| [coding-conventions](coding-conventions/SKILL.md) | 0.1.1 | Choose and apply project code conventions within a decided implementation, refactor or review scope, separating formatting, conventions, semantic defects and design trade-offs. Does not automatically switch formatters or tech stacks, or refactor the whole repository. |
 
 ### Diagnosis, verification and release
 
@@ -117,9 +117,9 @@ context at once.
 | Package | Version | Purpose |
 | --- | --- | --- |
 | [archive-maintenance](archive-maintenance/SKILL.md) | 0.1.0 | When active documents, rules, decisions or evidence need archiving, a shorter current entry, or history recovery, classify the retention contract, verify references and prove recoverability. Use for material lifecycle governance; does not perform business data migration and does not auto-clean files because they grew large or old. |
-| [skill-maintenance](skill-maintenance/SKILL.md) | 0.1.0 | Design, review, or within approved scope author and upgrade shared Skills; covers method extraction, trigger and behaviour evaluation, source licensing and cross-project compatibility maintenance. Ordinary project-document wording edits and using an existing Skill to complete a business task do not trigger this package. |
+| [skill-maintenance](skill-maintenance/SKILL.md) | 0.1.1 | Design, review, or within approved scope author and upgrade shared Skills; covers method extraction, trigger and behaviour evaluation, source licensing and cross-project compatibility maintenance. Ordinary project-document wording edits and using an existing Skill to complete a business task do not trigger this package. |
 | [ai-workspace-governance](ai-workspace-governance/SKILL.md) | 0.1.0 | Establish, maintain or review AI working materials under a project-selected root. Keep a common core for governance, selective policy-change memory, knowledge, active plans, a user workbench and retention configuration; allow project extensions and archive accepted plans under one archive root. Ordinary retrieval, implementation and isolated archive runs use their existing methods. |
-| [documentation-authoring](documentation-authoring/SKILL.md) | 0.1.0 | Write or revise human-facing technical, usage and explanatory documentation, organising structure by reader purpose, verifying key facts and checking examples, links and delivery format. Does not author project governance rules or mix session workflow into business documentation. |
+| [documentation-authoring](documentation-authoring/SKILL.md) | 0.1.1 | Write or revise human-facing technical, usage and explanatory documentation, organising structure by reader purpose, verifying key facts and checking examples, links and delivery format. Does not author project governance rules or mix session workflow into business documentation. |
 
 ### Server side
 

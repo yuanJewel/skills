@@ -2,7 +2,7 @@
 name: security-review
 description: Security-review a designated code change for identity, permissions, external input, command or file operations, sensitive outputs and dependencies, and report evidence-backed risks and verification gaps. Does not probe production and does not auto-fix or upgrade dependencies.
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Security boundary review

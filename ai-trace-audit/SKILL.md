@@ -2,7 +2,7 @@
 name: ai-trace-audit
 description: Review a specified change for collaboration traces that only serve an AI session, false comments and ineffective template content, giving evidence and reasonable exceptions per the project content boundary. Does not detect authorship and does not automatically delete or rewrite code.
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Collaboration-trace and content-truthfulness check
