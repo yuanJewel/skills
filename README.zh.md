@@ -2,7 +2,7 @@
 
 [English](README.md) | 中文
 
-面向 AI 编码助手的 38 个 Skill 包，覆盖从需求到计划、实现、审查、测试、诊断、发布的工程流程，
+面向 AI 编码助手的 Skill 包，覆盖从需求到计划、实现、审查、测试、诊断、发布的工程流程，
 以及 Go、gRPC、HTTP、MySQL、Redis、Vue、Playwright、pytest、Docker、Jenkins、GitLab、LDAP、
 云 API、容器镜像等专项方法。每个包是一份可发现、可执行、可验证的方法，而不是教程或命令清单。
 
@@ -98,6 +98,7 @@ ln -s /path/to/skills/plan-design  <project>/.agents/skills/plan-design
 | --- | --- | --- |
 | [archive-maintenance](archive-maintenance/SKILL.md) | 0.1.0 | 在活跃文档、规则、决定或证据需要归档、缩减当前入口或恢复历史时，分类保留合同、核对引用并证明可恢复性。用于资料生命周期治理；不承担业务数据迁移，也不因文件变大或过期自动清理。 |
 | [skill-maintenance](skill-maintenance/SKILL.md) | 0.1.0 | 设计、复核或在批准范围内编写与升级共享 Skill；涵盖方法提炼、触发及行为评估、来源许可和跨项目兼容维护。普通项目文档改字、使用既有 Skill 完成业务任务不触发本包。 |
+| [ai-workspace-governance](ai-workspace-governance/SKILL.md) | 0.1.0 | 在项目选定的资料根下建立、维护或复核 AI 工作资料。固定治理、选择性政策调整记忆、知识、活动计划、用户工作台与保留配置的共同核心；允许项目扩展，已验收计划统一归入同一归档根。普通取材、实施和单批归档沿用各自既有方法。 |
 | [documentation-authoring](documentation-authoring/SKILL.md) | 0.1.0 | 编写或修改面向人的技术、使用与解释文档，按读者目的组织结构，核实关键事实并检查示例、链接和交付格式。不代写项目治理规则，也不把会话流程混入业务文档。 |
 
 ### 服务端

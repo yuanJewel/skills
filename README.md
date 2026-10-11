@@ -2,7 +2,7 @@
 
 English | [简体中文](README.zh.md)
 
-38 Skill packages for AI coding assistants, covering the engineering flow from
+Skill packages for AI coding assistants, covering the engineering flow from
 requirement to plan, implementation, review, testing, diagnosis and release,
 plus focused methods for Go, gRPC, HTTP, MySQL, Redis, Vue, Playwright, pytest,
 Docker, Jenkins, GitLab, LDAP, cloud APIs and container images. Each package is
@@ -118,6 +118,7 @@ context at once.
 | --- | --- | --- |
 | [archive-maintenance](archive-maintenance/SKILL.md) | 0.1.0 | When active documents, rules, decisions or evidence need archiving, a shorter current entry, or history recovery, classify the retention contract, verify references and prove recoverability. Use for material lifecycle governance; does not perform business data migration and does not auto-clean files because they grew large or old. |
 | [skill-maintenance](skill-maintenance/SKILL.md) | 0.1.0 | Design, review, or within approved scope author and upgrade shared Skills; covers method extraction, trigger and behaviour evaluation, source licensing and cross-project compatibility maintenance. Ordinary project-document wording edits and using an existing Skill to complete a business task do not trigger this package. |
+| [ai-workspace-governance](ai-workspace-governance/SKILL.md) | 0.1.0 | Establish, maintain or review AI working materials under a project-selected root. Keep a common core for governance, selective policy-change memory, knowledge, active plans, a user workbench and retention configuration; allow project extensions and archive accepted plans under one archive root. Ordinary retrieval, implementation and isolated archive runs use their existing methods. |
 | [documentation-authoring](documentation-authoring/SKILL.md) | 0.1.0 | Write or revise human-facing technical, usage and explanatory documentation, organising structure by reader purpose, verifying key facts and checking examples, links and delivery format. Does not author project governance rules or mix session workflow into business documentation. |
 
 ### Server side
