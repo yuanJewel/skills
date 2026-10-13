@@ -12,6 +12,11 @@ A unique candidate is recovered directly. With several candidates, list project,
 
 Once the candidate is fixed, read the checkpoint, approval entry and current results first, then read chat history as needed to fill the difference. When the history tool lacks permission or is unavailable, degrade to on-disk recovery and state the insufficient coverage; "files were found" must not be written as "old session was read". Do not install tools or read secret configuration to read history.
 
+When the entry names a handover ID, check its state and preconditions under the project's collaboration contract before taking the entry's write scope.
+For `ai-workspace-governance`, follow [Collaboration contract section 5](../../ai-workspace-governance/references/collaboration-contract.md): pending -> verify, receive and confirm the limit; void -> follow its replacement.
+Already received or handed back -> do not execute again; stop and report to the user.
+Unmet candidate/workspace conditions or an unknown writer -> do not start; record the reason below the entry and hand back within existing write authorisation.
+
 ## 2. Recovery list and insufficient evidence
 
 | Fact to verify | Evidence and handling |

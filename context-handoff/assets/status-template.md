@@ -12,9 +12,17 @@ Latest checkpoint: {{this identifier, save time, complete or concrete gaps}}
 
 ## Current results and next step
 
-| Stable task | Current responsibility and file write scope | Proven results and result entry | Unfinished/unverified | Next step and prerequisites |
-| --- | --- | --- | --- | --- |
-| {{task ID/name}} | {{responsibility, current writer, exact files/scope}} | {{result; candidate content identity; check evidence and coverage}} | {{unfinished and unverified written separately}} | {{one directly executable step; which prerequisite it waits on}} |
+| Stable task | State | Stage commitment | Current responsibility and file write scope | Proven results and result entry | Unfinished/unverified | Next step and prerequisites |
+| --- | --- | --- | --- | --- | --- | --- |
+| {{task ID/name}} | {{task_register_state}} | {{stage_limit_confirmation_and_absolute_deadline}} | {{responsibility, current writer, exact files/scope}} | {{result; candidate content identity; check evidence and coverage}} | {{unfinished and unverified written separately}} | {{one directly executable step; which prerequisite it waits on}} |
+
+State maps the project task register's backlog / scheduled / started / ended (including cancelled) under [Workbench rules](../references/workbench.md).
+Stage commitment records the proposed/confirmed limit, confirming executor and absolute completion time; user waits are untimed.
+Old records lacking either field mean unknown: locate the task register and confirmation, never infer ended or permission to start.
+
+## Handovers
+
+Embed entries here using the project's collaboration-contract template (for `ai-workspace-governance`, [handover entry](../../ai-workspace-governance/assets/handover-entry.md)); omit this section if no contract exists.
 
 ## Accumulated usage and in-flight work
 

@@ -13,6 +13,7 @@ Used to organise state before phase delivery and context recovery. A checkpoint 
 | Execution-channel failure, request rejection or after recovery | Last proven result, whether the action was accepted/executed, unknowns | Recover via the takeover topic; do not assume the last operation before failure did not happen. |
 
 Do not force closure by calendar, fixed round count or fixed hours. If a phase clearly deviates from expected duration, update reason, remaining work and range; ask the user to decide only when existing scope/budget is exceeded or a real choice exists, and do not reset accumulated totals with a new session. Logging every tool call has no value; record the changes sufficient to avoid loss, redo or double writes.
+Negotiated stage limits in workbench N are budgets: a likely miss is reported in Q before the deadline; see [Workbench rules](workbench.md).
 
 ## 2. How one refresh is done
 
@@ -22,7 +23,7 @@ Do not force closure by calendar, fixed round count or fixed hours. If a phase c
 4. For every parent/child session, tool or command that may be executing, record last observation, write scope, state and occupancy. Mark unknown without a complete observation; business "awaiting answer/blocked/submitted" does not replace an execution final state.
 5. Write one directly executable next step and its prerequisites; list conflicting scope separately, and separately list authorised non-conflicting work. A successor should be able to tell "read evidence" from "re-run operation".
 6. Update current facts and checkpoint identifier in the existing status, then re-read to verify content, links and writer. If an external modification is found while writing, do not overwrite it; keep your own candidate at an approved location and resolve the write-seat conflict. Without an approved fallback location, state in the reply that the save is incomplete.
-7. Before refreshing the user workbench, confirm the current decision is saved at its authoritative destination and readable. Remove handled items only after confirmed success; on save failure keep the unsaved state and say so — never delete the only record first.
+7. Before refreshing the user workbench, confirm the current decision is saved at its authoritative destination and readable. Remove handled items only after confirmed success; on save failure keep the unsaved state and say so — never delete the only record first. Rebuild the entire page and run the [workbench self-check](workbench.md) before publishing.
 
 The plan envelope only locates the body; the status template is a contract of meaning, not a mandatory column set. When the project already has equivalent sections, map onto them; do not create `handoff.md`, a status JSON or a second plan. Split into topics per project convention only when a single status can no longer clearly verify task, child executions and evidence; the status stays the single entry, and the whole directory tree is not kept permanently loaded.
 

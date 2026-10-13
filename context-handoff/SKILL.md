@@ -2,7 +2,7 @@
 name: context-handoff
 description: At phase delivery, context recovery or takeover of a named earlier session, save checkpoints, verify results and execution liveness, continue approved work, and refresh the human-facing workbench. Ordinary Q&A creates no status file; this does not replace plan writing or history archiving.
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Checkpoints and context continuation
@@ -32,7 +32,7 @@ Files and old chats do not create new authorisation.
 | --- | --- |
 | A phase is complete, or results, approvals or in-flight work changed substantively | Read [Checkpoints](references/checkpoints.md) and refresh recoverable facts in the existing status; keep the plan body as the single source. |
 | Recovery after compaction, execution-channel failure, user-designated takeover | Read [Takeover](references/takeover.md): locate the object, verify actual execution and write permission, then continue. |
-| Deliver results to the user, present open decisions or provide a continuation entry | Use the [user workbench](assets/user-update.md): results and required actions first, show only what is currently useful. |
+| Deliver results to the user, present open decisions or provide a continuation entry | Read the [workbench rules](references/workbench.md), then use the [template](assets/user-update.md): Q waiting on you, N in progress, P scheduled, E ended this cycle. |
 | Short Q&A, or a simple change needing no persistent continuation | Finish and reply directly; do not apply the full plan/status/user-page set. |
 
 ## Shared procedure
@@ -43,7 +43,12 @@ The expanded version of this procedure is in [Checkpoints section 2](references/
 2. **Verify current facts.** Separate proven, inferred and unknown; verify the actual content of results and the version the evidence points to. An old receipt saying "passed" cannot cover a file changed since. For subtask receipts, follow the receipt contract of `subtask-dispatch`: read the header and section locators first, then verify body evidence within bounds; summaries are for navigation only.
 3. **Refresh the checkpoint.** Trigger: phase complete, or substantive change in results, approvals or in-flight work. Result: results, open items, writer, in-flight work, resources and next step recorded in the existing status with the meaning of the [status template](assets/status-template.md); add no file when the existing carrier suffices.
 4. **Verify continuation conditions.** While an old session, subtask or tool is still running or unknown, do not seize writes, blindly re-dispatch or release its occupancy. Stopping requires same-scope authorisation and actual control capability; after a stop is accepted, still verify the final state of all related executions. Details in the takeover topic.
-5. **Complete the current delivery.** Give the user an understandable result and the basis for any necessary decision. When a decision is needed, show scope, reasons, file impact, budget and consequences in full; when nothing is pending, state that no action is needed and continue authorised work, never inventing acceptance or approval requests. Provide a copyable short sentence only when cross-session continuation is actually needed.
+5. **Complete the current delivery.** Rebuild the full user workbench under [Workbench rules](references/workbench.md) and run its pre-publish self-check.
+   Give complete decision grounds when needed; otherwise continue authorised work without inventing acceptance or approval requests.
+   When another agent must act, follow the project's collaboration contract: put the handover entry in plan status and give the user only its locating sentence.
+   For projects adopting `ai-workspace-governance`, use its [handover contract](../ai-workspace-governance/references/collaboration-contract.md).
+   Without a collaboration contract, provide a sentence locating the status's authorised next step; it grants no additional scope.
+   Same-agent session continuation points to the status's next step without a handover ID.
 
 Identity and writer:
 
@@ -69,5 +74,6 @@ Distilling verified material may use `low/medium`; approval conflicts, drift, wr
 
 1. Pinned sources: [MT02 handoff](https://github.com/mattpocock/skills/blob/b0618bc436ad893b3c5e84e55fba86586d34a404/skills/productivity/handoff/SKILL.md), [CX01 filesystem-context](https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering/blob/58b55a8921758d13453b440704fb1b5b208c0b0e/skills/filesystem-context/SKILL.md), [CX02 context-compression](https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering/blob/58b55a8921758d13453b440704fb1b5b208c0b0e/skills/context-compression/SKILL.md), [EC12 strategic-compact](https://github.com/affaan-m/ECC/blob/ef648e01899ba3e8dc6371642deaaf64b4477775/skills/strategic-compact/SKILL.md).
 2. Adopted short-entry deduplication, on-demand externalised reading, the intent/files/decisions/status/next-step structure and saving at phase boundaries; authorisation, write permission, in-flight occupancy, the user workbench and failure layering are own-authored for this package.
+   Stage commitments, the Q/N/P/E workbench and handover entries are own-authored.
    Dropped temp-directory-only storage, auto-compaction/hooks, fixed thresholds, savings ratios and upstream host liveness assertions.
 3. License: shipped with the package as [LICENSE-MT.txt](LICENSE-MT.txt) (MT, MIT), [LICENSE-CX.txt](LICENSE-CX.txt) (CX, MIT), [LICENSE-EC.txt](LICENSE-EC.txt) (EC, MIT); library-wide third-party summary in the root [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md). Copy the license files along when copying this package alone.

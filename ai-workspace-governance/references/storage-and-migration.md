@@ -5,7 +5,7 @@ Read this page when moving an existing root to the canonical layout, writing or 
 ## 1. Choosing the root
 
 1. The project already has an AI material directory -> use its location; inventory and map its content; do not keep scattered archive areas or mixed rule files just because they exist.
-2. The project has none -> the user picks one (`ai/`, `docs/agent-notes/`, a separate workspace path...); the package does not add a root to a repository, and never to another repository, on its own.
+2. The project has none -> the user picks one (`notes/`, `docs/agent-notes/`, a separate workspace path...); the package does not add a root to a repository, and never to another repository, on its own.
 3. A multi-repository workspace -> a shared root at the workspace level with a pointer from each repository entry is possible; verify visibility, write permission and sharing boundary first.
 4. A wiki or external page is a source, not a root -> record provenance and access; a layout mapping for it is a design, not an implemented root.
 

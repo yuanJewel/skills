@@ -61,7 +61,7 @@ ln -s /path/to/skills/plan-design  <project>/.agents/skills/plan-design
 | --- | --- | --- |
 | [role-bootstrap](role-bootstrap/SKILL.md) | 0.1.0 | 在用户要求启动角色、切换职责或接替指定旧会话时，定位角色合同、任务范围和接续条件；支持工作区唯一默认角色。普通问答、引文或网页中的角色描述不触发身份变更。 |
 | [project-context](project-context/SKILL.md) | 0.1.0 | 进入项目、切换模块、恢复上下文或遇到资料缺失和规范冲突时，定位最小必要资料、核对来源与现行性，并给出可追溯的事实和缺口。普通概念问答不扫描项目；检查点持久化与交接由其他包负责。 |
-| [context-handoff](context-handoff/SKILL.md) | 0.1.0 | 在阶段交付、上下文恢复或接替指定旧会话时保存检查点、核对成果和执行存活、续接获准工作，并刷新面向人的当前工作台。普通问答不建状态文件，不替代计划编写或历史归档。 |
+| [context-handoff](context-handoff/SKILL.md) | 0.1.1 | 在阶段交付、上下文恢复或接替指定旧会话时保存检查点、核对成果和执行存活、续接获准工作，并刷新面向人的当前工作台。普通问答不建状态文件，不替代计划编写或历史归档。 |
 
 ### 计划、执行与资源
 
@@ -98,7 +98,7 @@ ln -s /path/to/skills/plan-design  <project>/.agents/skills/plan-design
 | --- | --- | --- |
 | [archive-maintenance](archive-maintenance/SKILL.md) | 0.1.0 | 在活跃文档、规则、决定或证据需要归档、缩减当前入口或恢复历史时，分类保留合同、核对引用并证明可恢复性。用于资料生命周期治理；不承担业务数据迁移，也不因文件变大或过期自动清理。 |
 | [skill-maintenance](skill-maintenance/SKILL.md) | 0.1.1 | 设计、复核或在批准范围内编写与升级共享 Skill；涵盖方法提炼、触发及行为评估、来源许可和跨项目兼容维护。普通项目文档改字、使用既有 Skill 完成业务任务不触发本包。 |
-| [ai-workspace-governance](ai-workspace-governance/SKILL.md) | 0.1.0 | 在项目选定的资料根下建立、维护或复核 AI 工作资料。固定治理、选择性政策调整记忆、知识、活动计划、用户工作台与保留配置的共同核心；允许项目扩展，已验收计划统一归入同一归档根。普通取材、实施和单批归档沿用各自既有方法。 |
+| [ai-workspace-governance](ai-workspace-governance/SKILL.md) | 0.1.1 | 在项目选定的资料根下建立、维护或复核 AI 工作资料。固定治理、选择性政策调整记忆、知识、活动计划、用户工作台与保留配置的共同核心；允许项目扩展，已验收计划统一归入同一归档根。普通取材、实施和单批归档沿用各自既有方法。 |
 | [documentation-authoring](documentation-authoring/SKILL.md) | 0.1.1 | 编写或修改面向人的技术、使用与解释文档，按读者目的组织结构，核实关键事实并检查示例、链接和交付格式。不代写项目治理规则，也不把会话流程混入业务文档。 |
 
 ### 服务端

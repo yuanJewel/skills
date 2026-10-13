@@ -1,61 +1,88 @@
-<!-- This file is the only template for the human-facing current workbench, for the project's chosen user page or the current reply.
-When generating, delete this note, the examples and every heading that does not apply; keep only what the user needs to see now.
-Do not hand the user an abbreviated internal status table; results first, then the real required action.
-Update the project's existing user page when there is one; tasks needing no persistent user page deliver in the reply, adding no file for the template's sake.
-The full decision basis must not be cut for brevity, and the user must not be asked to assemble a conclusion across several files. -->
+<!-- Rebuild the entire page from current facts.
+Delete this comment when generating the page.
+Rules and pre-publish self-check: ../references/workbench.md. -->
 
-# {{work name}}
+# User workbench — {{current_development_version}}
 
-{{State first the results obtained, actual coverage and gaps affecting the user's goal, using names the user understands.}}
+Updated: {{date_time_timezone}}
 
-<!-- Choose one action sentence by situation; never ask "approve?/continue?" out of nowhere:
-No pending decision/acceptance/manual action -> "No action needed from you now; I will continue {{authorised next step}}."
-All current work complete -> "{{Result}} is complete; no action needed from you now."
-A real action exists -> "You now need to {{one clear decision or action}}, because {{what is affected without it}}." -->
-{{action sentence}}
+## Q Waiting on you
 
-<!-- Keep the next section only when a current decision is pending; several truly independent items may be listed side by side; never re-request approval for already authorised actions. -->
+### Q1 Decision: {{decision_title}} [{{requirement_id}}]
 
-## Your decision needed: {{item described in the user's language}}
+Recommended: {{option_number_and_reason}}.
 
-{{Recommended option and reasons; list real alternatives and trade-offs; explain why existing authorisation is insufficient to make this decision for the user.}}
+1. {{first_real_option_and_tradeoff}}
+2. {{second_real_option_and_tradeoff}}
+3. {{third_real_option_if_needed}}
 
 | Decision basis | Current specifics |
 | --- | --- |
-| What is done this time | {{clear scope, target result and necessary boundaries; how far existing authorisation covers}} |
-| Why now | {{verified facts, what changed and the impact on the user's goal; unverified assumptions listed separately}} |
-| Which files/artefacts change | {{concrete reviewable files/UI/deliverables and the changes; related affected items too, not just a file count}} |
-| Verification and failure handling | {{key acceptance, verification done, evidence still missing, where recovery goes after failure}} |
-| Time and resources | {{the user's waiting range, the parts of accumulated effort/resources or cost that affect the decision, prerequisites; unknowns stated explicitly}} |
-| What your choice changes | {{outcomes of different choices, impact of deferral and the real actions the user must take}} |
+| What is done this time | {{scope_target_boundaries_and_existing_authorisation}} |
+| Why now | {{verified_facts_change_impact_and_unverified_assumptions}} |
+| Which files/artefacts change | {{concrete_reviewable_artefacts_and_affected_items}} |
+| Verification and failure handling | {{pass_criteria_actual_checks_gaps_and_recovery}} |
+| Time and resources | {{waiting_range_relevant_usage_prerequisites_and_unknowns}} |
+| What your choice changes | {{outcomes_deferral_impact_and_required_user_actions}} |
 
-{{The exact choice to make or single step to perform; evidence links allow deeper checking, but key decision information is shown in full on this page.}}
+Choose {{numbered_choice}}; {{key_information_needed_to_decide_here}}.
 
-<!-- Keep the corresponding section only when user acceptance or a manual action is really needed now; accepted items no longer keep a pending column. -->
+### Q2 Acceptance: {{result_title}} [{{requirement_id}}]
 
-## {{Result awaiting acceptance / Action you need to complete}}
+Entry: {{viewable_result_link}}. Pass criteria: {{actual_criteria}}.
+Verified: {{coverage}}. Limits: {{unverified_items}}. {{exact_acceptance_action}}.
 
-{{Directly viewable result entry, the actual pass criteria, verified coverage and limits; or the exact manual action, object and observable result after completion.}}
-{{Request only actions agreed in the original task or actually necessary; do not escalate author self-checks into mandatory user acceptance.}}
+### Q3 Operation: {{action_title}} [{{requirement_id}}]
 
-<!-- Keep only when another session must continue now; takeover does not require the user to carry hashes, version lists or internal status tables.
-The copyable sentence locates; the successor reads approvals, results, write permission and in-flight work itself; the sentence neither means the old execution stopped nor grants extra actions. -->
+{{exact_action_and_object}}. After completion: {{observable_result}}.
+For a necessary handover, forward to {{receiver}} to {{purpose}}:
 
-## Continue this work
+> Working directory {{working_directory}}. Read {{material_root_entry}} first, then handover entry {{handover_id}} in {{status_path}} and follow it; you are {{plan_id}}'s {{responsibility}}.
 
-Paste into the target session:
+## N In progress
 
-> Continue {{project/work name}}, {{plan or stable task ID, phase}}. Recover current approvals, results, write permission and in-flight work from {{single status entry}} and continue the authorised next step.
+| Task | Stage | Executor | Committed completion | Remaining |
+| --- | --- | --- | --- | --- |
+| {{task}} [{{requirement_id}}] | {{stage}} | {{responsibility_and_tool}} | {{absolute_time_or_waiting_on_you_q}} | {{clock_based_remaining}} |
 
-<!-- Pre-publish check:
-1. Can the user understand the result and whether action is needed on the first screen? If no action, is that stated explicitly?
-2. Is each real decision complete in scope, reasons, concrete file impact and budget, rather than hidden behind several links?
-3. Do internal task numbers, hashes, resource ledgers, source checks or tool operation steps really affect the user's decision? If not, leave them in status/evidence.
-4. Are confirmed items first written to the formal decision location, then removed from the current page? Without new facts, keep no confirmation history, empty headings or "none" tables.
-5. Does the continuation sentence appear only when needed, using stable identity to avoid same-name mix-ups? -->
+## P Scheduled
 
-<!-- Examples (do not copy into the user page):
-No pending decision: The export format is fixed; all three samples open normally. Old-format compatibility is still being verified. No action needed from you now; I will continue the compatibility check.
-Real decision: Two export options have been compared. You now need to choose whether to keep the old format, because disabling it affects colleagues still on the old client.
-The latter must fully fill concrete files/artefacts, compatibility scope, time/resources and consequences; never just "see link for options, please approve".
-Misuse: "Changed several files today, verified several hashes, nothing pending but please confirm to continue" — that is an internal ledger and manufactures a new approval. -->
+| Task | Next stage and executor | Planned start | Estimate | Dependencies |
+| --- | --- | --- | --- | --- |
+| {{task}} [{{requirement_id}}] | {{stage_and_executor}} | {{planned_start}} | {{estimate_range}} | {{dependencies}} |
+
+{{count}} backlog items: see {{task_register_link}}.
+
+## E Ended this cycle
+
+- {{task}} [{{requirement_id}}] — {{one_sentence_result}}, {{end_date}}, {{archive_or_result_link}}
+
+---
+
+Synthetic example — fictional project Cedar, version 2.4.0; replace the template with actual current facts, omitting this example.
+
+# User workbench — 2.4.0
+
+Updated: 2030-04-08 10:00 UTC
+
+## Q Waiting on you
+
+None
+
+## N In progress
+
+| Task | Stage | Executor | Committed completion | Remaining |
+| --- | --- | --- | --- | --- |
+| Export compatibility [R2] | Implementation | Implementer · Tool A | 2030-04-08 12:00 UTC | 2h |
+
+## P Scheduled
+
+| Task | Next stage and executor | Planned start | Estimate | Dependencies |
+| --- | --- | --- | --- | --- |
+| Export guide [R3] | Design · Tool B | 2030-04-09 09:00 UTC | 1–2h | Export compatibility |
+
+0 backlog items: see the project task register.
+
+## E Ended this cycle
+
+- Preview layout [R1] — Accepted preview aligns with the sample, 2030-04-07, project result entry `results/preview.md`.
