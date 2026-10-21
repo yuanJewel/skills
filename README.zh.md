@@ -86,11 +86,12 @@ ln -s /path/to/skills/plan-design  <project>/.agents/skills/plan-design
 
 | 包 | 版本 | 用途 |
 | --- | --- | --- |
-| [systematic-diagnosis](systematic-diagnosis/SKILL.md) | 0.1.0 | 排查缺陷、构建失败、跨组件错误或性能退化，用症状复现、边界证据和可证伪实验定位原因。根因已明确的获批小修直接执行修复；新功能设计和完成声明不由本技能代替。 |
+| [systematic-diagnosis](systematic-diagnosis/SKILL.md) | 0.1.1 | 排查缺陷、构建失败、跨组件错误或性能退化，用症状复现、边界证据和可证伪实验定位原因。根因已明确的获批小修直接执行修复；新功能设计和完成声明不由本技能代替。受限环境的用户代执行取证步骤交 guided-evidence-collection；agent 可执行的本地只读取证交 readonly-ops-diagnostics。 |
+| [guided-evidence-collection](guided-evidence-collection/SKILL.md) | 0.1.0 | 决定性证据位于 agent 无法进入的环境（如生产、受限集群或本机沙箱外）时，设计可复制的只读步骤交用户执行，并解读回贴。不连接这些环境、不索取凭据，取证步骤不含改变状态的操作。agent 可执行的本地取证交 readonly-ops-diagnostics；诊断循环与修复交 systematic-diagnosis。 |
 | [test-strategy](test-strategy/SKILL.md) | 0.1.0 | 根据本次变更的行为和风险选择测试范围、断言、夹具与执行隔离，说明覆盖和不测的理由。用于制定或调整验证方案；具体语言的测试实现、完成判定和发布顺序由各自专项方法处理。 |
 | [verification-gate](verification-gate/SKILL.md) | 0.1.0 | 在声称完成、修好或通过前，核对结论与候选、验收、执行状态和证据范围是否匹配。复用仍有效的证据，只补必要核验；不另造测试策略，也不自动重跑全量。 |
 | [release-readiness](release-readiness/SKILL.md) | 0.1.0 | 用户准备上线时，从固定候选、审查和本地全量证据进入人工验收，处理验收变更并给出上线前建议。普通阶段仅评估现状，不自动启动全量；本技能不发布、不切流，也不代替用户最终决定。 |
-| [readonly-ops-diagnostics](readonly-ops-diagnostics/SKILL.md) | 0.1.0 | 对范围明确的本地容器、依赖或请求链故障进行只读证据采集、时间对齐和假设检验。用于延迟、错误或本地失败演练诊断；不执行线上调查、自动修复或未授权故障注入。 |
+| [readonly-ops-diagnostics](readonly-ops-diagnostics/SKILL.md) | 0.1.1 | 对范围明确的本地容器、依赖或请求链故障进行只读证据采集、时间对齐和假设检验。用于延迟、错误或本地失败演练诊断；不执行线上调查、自动修复或未授权故障注入。agent 无法进入的环境中需用户代执行的取证交 guided-evidence-collection；诊断循环与修复交 systematic-diagnosis。 |
 
 ### 资料与维护
 

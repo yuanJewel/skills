@@ -1,8 +1,8 @@
 ---
 name: readonly-ops-diagnostics
-description: Collect read-only evidence, align timelines and test hypotheses for a clearly scoped local container, dependency or request-chain failure. Use for diagnosing latency, errors or local failure rehearsals; does not perform production investigation, automatic remediation or unauthorised fault injection.
+description: Collect read-only evidence, align timelines and test hypotheses for a clearly scoped local container, dependency or request-chain failure. Use for diagnosing latency, errors or local failure rehearsals; does not perform production investigation, automatic remediation or unauthorised fault injection. User-run collection in environments the agent cannot enter belongs to guided-evidence-collection; the diagnosis loop and fixes belong to systematic-diagnosis.
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Local read-only diagnosis

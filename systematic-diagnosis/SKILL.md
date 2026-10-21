@@ -1,8 +1,8 @@
 ---
 name: systematic-diagnosis
-description: Investigate defects, build failures, cross-component errors or performance regressions, locating the cause through symptom reproduction, boundary evidence and falsifiable experiments. An approved small fix with an already clear root cause is applied directly; new feature design and completion claims are not replaced by this skill.
+description: Investigate defects, build failures, cross-component errors or performance regressions, locating the cause through symptom reproduction, boundary evidence and falsifiable experiments. An approved small fix with an already clear root cause is applied directly; new feature design and completion claims are not replaced by this skill. User-run evidence steps for environments the agent cannot enter belong to guided-evidence-collection; agent-executable local read-only collection belongs to readonly-ops-diagnostics.
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Systematic diagnosis
@@ -13,7 +13,8 @@ Produce a reviewable cause and next step; when evidence is insufficient, deliver
 
 Take the user's symptom and expectation, conditions of occurrence, candidate content identity, reproduction steps, allowed read/execute/modify scope, available local tools and the relevant boundary contracts.
 Cite existing information directly; a missing item blocks only the experiments that depend on it.
-Without a real reproduction, start with a synthetic minimal scenario and state "original failure not yet reproduced"; do not ask for production data or credentials to complete the scenario.
+Without a real reproduction, start with a synthetic minimal scenario and state "original failure not yet reproduced"; do not ask for credentials or raw production dumps to complete the scenario.
+When decisive evidence is only reachable by the user, use `guided-evidence-collection` for minimal safe observations instead of treating a synthetic scenario as runtime proof.
 
 First identify which layer the error is in: product result mismatch, test fixture/expectation mismatch, runtime environment not ready, interface version/semantic drift.
 This is a classification to be tested and several may hold at once; a red test does not by default mean the product is wrong.
@@ -22,7 +23,10 @@ This is a classification to be tested and several may hold at once; a red test d
 
 1. **Pin the observable symptom.** Write "under condition X, on candidate Y, expected A, actual B", with the request/execution identity and time range.
    Choose a test, CLI, HTTP call, browser or minimal local harness that reaches the symptom; assert the business result or error semantics; "the process did not crash" is not enough to capture the problem.
+   If the symptom is only reachable in an environment the agent cannot enter, use `guided-evidence-collection` to design user-run steps; returned results still enter this package's hypothesis ledger.
 2. **Build a feedback loop.** Actually run the narrowest approved experiment, keeping input, expectation, observation and exit status; confirm the failure is the target symptom, not a missing dependency or syntax error.
+   If only the user can reach the feedback loop, hand the step design to `guided-evidence-collection`.
+   Interpret pasted results in this package's hypothesis ledger.
    For hard-to-reproduce, multi-cause or intermittent failures read [Reproduction and hypotheses](references/reproduction-and-hypotheses.md).
 3. **Locate the first divergence.** Compare against a good sample, verifying input, identity, transformation and result boundary by boundary; for cross-component or performance problems read [Boundaries and performance](references/boundaries-and-performance.md).
    Closeness in time does not mean the same execution; a healthy direct connection does not mean the user entry path is healthy.
@@ -35,7 +39,8 @@ This is a classification to be tested and several may hold at once; a red test d
 
 ## Failure and recovery
 
-- Local tool or dependency missing: record the point that cannot run, continue with static tracing or synthetic stubs; real parts the stub did not reach remain unverified, and do not switch to production environments.
+- Local tool or dependency missing: record the point that cannot run, continue with static tracing or synthetic stubs; real parts the stub did not reach remain unverified.
+  Do not switch to production environments: the agent must not enter them; needed evidence there uses `guided-evidence-collection` for user execution.
 - Contradictory observations: first check candidate, request identity, time base, sampling and log loss; keep the contradiction and do not pick the logs that support your preference.
 - Experiment interrupted/timed out: keep the input and execution handle, first confirm whether it is still running and whether it produced results; a timeout is an observation, not a root cause.
   An experiment with side effects and unknown result must not be blindly re-run.

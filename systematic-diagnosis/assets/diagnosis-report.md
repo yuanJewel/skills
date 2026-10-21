@@ -5,9 +5,9 @@ Candidate and environment: {{content identity, entry, tools/dependencies; unveri
 Reproduction: {{steps/script and minimal input; original symptom reproduced / synthetic reproduction only / not yet reproduced}}.
 Scope: {{reads, experiments and fix boundary allowed this time}}.
 
-| Key fact | Locatable evidence | Notes and limits |
-| --- | --- | --- |
-| {{first divergence}} | {{execution identity, file/result location}} | {{fact or inference, gaps}} |
+| Key fact | Locatable evidence | Source label | Notes and limits |
+| --- | --- | --- | --- |
+| {{first divergence}} | {{execution identity, file/result location}} | {{source_label_and_context_per_guided_evidence_collection}} | {{fact or inference, gaps}} |
 
 Root cause / confidence: {{how evidence rules out alternative explanations, or remaining hypotheses}}.
 Ruled out: {{only under which conditions}}.
@@ -16,3 +16,5 @@ Open / next experiment: {{discriminating power, two expected outcomes, required 
 Recovery: {{interrupted execution identity, in-flight confirmation, handling of temporary instrumentation/artefacts}}.
 
 Cross-link with the hypothesis ledger as needed; do not paste whole logs, and do not copy the plan or user workbench here.
+
+Use the four evidence labels defined by `guided-evidence-collection` for every evidence item; retain its required context and do not describe user-run results as agent-verified.
