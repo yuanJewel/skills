@@ -133,7 +133,7 @@ ln -s /path/to/skills/plan-design  <project>/.agents/skills/plan-design
 | [gitlab-webhook-local-git](gitlab-webhook-local-git/SKILL.md) | 0.1.0 | 设计、审查和合成验证 GitLab webhook 的认证、事件选择、重试与乱序投递，以及获准的隔离本地 Git 协议测试。不注册真实 hook、不建外网隧道、不操作真实域名下的仓库，也不写业务仓库。 |
 | [ldap-rbac](ldap-rbac/SKILL.md) | 0.1.0 | 设计、审查与合成验证 LDAP 登录、目录同步、组到角色映射、API 鉴权和撤权。用于 bind/search、身份唯一性与旧会话失效问题。不获取凭据、不查询真实目录，也不擅自更改既有权限类别。 |
 | [cloud-api-integration](cloud-api-integration/SKILL.md) | 0.1.0 | 设计或测试云 provider 的 HTTP/SDK 客户端边界、分页、限流重试、异步操作状态和资源归一化。用于既定接口集的封装与本地合成验证；不执行真实云发现、测试或操作，也不自动把既有直调替换为 SDK。 |
-| [container-image-management](container-image-management/SKILL.md) | 0.1.0 | 规划、执行或复核容器镜像构建、跨仓同步、Harbor 上传、多架构清单验证及镜像保留清理。用于制品身份与分发任务；不负责业务部署切流、本机 Compose 故障或同名 Harbor 基准评测工具。 |
+| [container-image-management](container-image-management/SKILL.md) | 0.1.1 | 规划、执行或复核容器镜像构建、跨仓同步、Harbor 上传、多架构清单验证及镜像保留清理。用于制品身份与分发任务；不负责业务部署切流、本机 Compose 故障或同名 Harbor 基准评测工具。 |
 
 ## 随包脚本
 

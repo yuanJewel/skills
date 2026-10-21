@@ -5,6 +5,7 @@
 - Start/end identity: {{before / after manifest location and candidate_sha256}}
 - Stability: {{same/changed/could not stabilise; an empty scope must not pass}}
 - Specification and standards inputs: {{version, provenance; missing items and impact}}
+- Fix claim (if any): {{defect, mechanism, scope and regression evidence per the fix-claim checks; or not applicable}}
 - Included/excluded: {{added, modified, deleted, generation inputs/outputs, uncommitted/WIP; per-item exclusion reason}}
 
 | Axis | Requirement or rule | Implementation location | Evidence and kind | Conclusion/gap |

@@ -72,6 +72,26 @@ The standards axis first compares against applicable rules and neighbouring impl
 
 Generated differences require checking whether sources and artefacts were updated together and whether the generator/runtime version is supported; actually running the generator is outside the read-only script. Without output reproduction evidence, never claim generation is consistent.
 
+## Fix claims
+
+Apply this section when the candidate or its task claims to fix a defect; feature requests stay with the ordinary specification axis.
+
+- Defect: name the previous incorrect behaviour, the affected entry point or variant and the expected behaviour, taken from the specification, a report or a reproducible input. Missing any
+  of them -> mark the fix claim "insufficient material"; never infer it from a title or an issue number.
+- Mechanism: explain how the changed code corrects that defect, and check the other platforms, scopes, modes and callers that share the changed code; a correction for one variant must not
+  redirect or break another.
+- Focused scope: new commands or features, changed policy defaults, refactors, dependency bumps, generated metadata and documentation-only edits are not part of the fix; report them as
+  out-of-scope items. A mixed fix and feature that needs a product decision goes back to the user; the reviewer does not make that decision.
+- Regression evidence: a test counts only when it exercises the original failure, asserts the corrected behaviour and would fail under the old mechanism. A test that mirrors the new
+  implementation or only updates a snapshot does not count; a change to a shared path also needs coverage showing unaffected variants still work. "Tests pass" without a visible regression
+  test is an evidence gap; whether a run belongs to the current candidate is judged with `verification-gate`.
+- Visible blockers: swallowed errors, weakened assertions, bypassed security or privacy boundaries, fabricated success and license or dependency notices that contradict the change are
+  defects, reported with the issue fields of the main workflow.
+- Linked issues and requirements: treat one as matched only when its reported failure, affected behaviour and expected result all match the corrected defect; similar keywords are not enough.
+  A bounded search yields "possible matches", never an exhaustive result or a confirmed closure.
+
+Misuse: a fix's only new test asserts the return value of a newly added helper; it is not regression evidence for the reported failure, so the fix claim keeps an evidence gap.
+
 ## Conclusion and recovery boundary
 
 Give each axis separately "no confirmable issue found / issues found / insufficient material"; the overall summary covers only the current scope. When the user requested only a review, hand fix suggestions back; do not change source code automatically. After a fix, re-hash and locate affected cases and consumers; conclusions confirmed to have no cross-impact may be carried over, but the basis must be stated.

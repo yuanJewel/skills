@@ -2,7 +2,7 @@
 name: container-image-management
 description: Plan, execute or review container image builds, cross-registry sync, Harbor uploads, multi-platform manifest list verification and image retention cleanup. Use for artefact identity and distribution tasks; does not cover business deployment traffic switching, local Compose failures or the identically named Harbor benchmarking tool.
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Container image management
@@ -41,6 +41,8 @@ After cleanup, re-verify the retained tags and content graphs; do not rely on th
 
 Read-only preparation across different repositories may run in parallel; release tag updates, rollbacks and cleanup run serially under the sole writer.
 Budget bandwidth, disk, builder CPU and download-verification bytes separately; pulling multiple platforms does not mean they run natively on the local machine.
+Resource guidance: read-only preparation uses low/low; build and verification use normal/medium; cross-platform mapping, signatures and rollback judgments use normal/high.
+Grade words map to actual execution configuration through the project resource mapping.
 Do not automatically add remote builders, install QEMU, change TLS policy or change Harbor global settings.
 
 **Wrap-up cleanup**: intermediate images built or pulled locally, temporary local tags, temporary buildx builders and exported files are cleaned up at task end.

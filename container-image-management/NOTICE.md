@@ -12,3 +12,4 @@ Upstream links, commits and applicability limits are in SKILL.md and the technic
 ## Modification record
 
 - 2026-10-09: 0.1.0 initial public version, content as above.
+- 2026-10-21: 0.1.1 adds resource grade words; adopted source content unchanged.
